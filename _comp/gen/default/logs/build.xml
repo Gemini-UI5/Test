@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    development component
+                     name: test
+                   vendor: demo.sap.com
+                     type: Web Dynpro
+                 sub-type: 
+              type-vendor: sap.com
+
+       software component
+                     name: MyComponents
+                   vendor: demo.sap.com
+
+                 location: localDevelopment
+          source location: kjakka@GCS-HLT-070
+            build variant: default
+
+    building on GCS-HLT-070, Windows 10/amd64, version 10.0
+    using Java VM 'Java HotSpot(TM) 64-Bit Server VM', version 25.202-b08 (Oracle Corporation)
+    build started at 2026-06-29 04:34:02 GMT-04:00 (EDT)
+
+    Build Plugin 'WebdynproPlugin', Version 7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:32:17 +0200, CL259458)
+    detailed versions:
+    sap.com:tc/bi/anttasks#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:09 +0200, CL259458)
+    sap.com:tc/bi/bp/webDynpro#webDynpro 7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:32:17 +0200, CL259458)
+    sap.com:tc/bi/core#def               7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:34:14 +0200, CL259458)
+    sap.com:tc/bi/ddictech#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:04 +0200, CL259458)
+    sap.com:tc/bi/exception#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:08 +0200, CL259458)
+    sap.com:tc/bi/extcm#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:13 +0200, CL259458)
+    sap.com:tc/bi/extddic#def            7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:07 +0200, CL259458)
+    sap.com:tc/bi/extddicdb#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:12 +0200, CL259458)
+    sap.com:tc/bi/extgf#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:07 +0200, CL259458)
+    sap.com:tc/bi/extmm#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:07 +0200, CL259458)
+    sap.com:tc/bi/extsql#def             7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:09 +0200, CL259458)
+    sap.com:tc/bi/extwd#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:12 +0200, CL259458)
+    sap.com:tc/bi/framework#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:30:47 +0200, CL259458)
+    sap.com:tc/bi/i18n#def               7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:06 +0200, CL259458)
+    sap.com:tc/bi/javatech#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:20 +0200, CL259458)
+    sap.com:tc/bi/jdoc#def               7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:08 +0200, CL259458)
+    sap.com:tc/bi/jdoc/util#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:09 +0200, CL259458)
+    sap.com:tc/bi/jlincbs#def            7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:19 +0200, CL259458)
+    sap.com:tc/bi/settings#version       7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:32:05 +0200, CL259458)
+    sap.com:tc/bi/tssap#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:09 +0200, CL259458)
+    sap.com:tc/bi/util#util              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:30:56 +0200, CL259458)
+    sap.com:tc/bi/velocity#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:05 +0200, CL259458)
+    sap.com:tc/bi/wdtech#def             7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:44 +0200, CL259458)
+    sap.com:tc/bi/xml#def                7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:06 +0200, CL259458)
+ -->
+<project name="DC Build"
+         default="build"
+         basedir=".">
+<taskdef name="CreateDCDependencyInfo" classname="com.sap.tools.ant.taskdefs.CreateDCDependencyInfo"/>
+<taskdef name="cda" classname="com.sap.tc.buildplugin.deploy.DeployArchiveTask"/>
+<taskdef name="checkfileset" classname="com.sap.tools.ant.taskdefs.EmptyFilesetCheck"/>
+<taskdef name="cmgen" classname="com.sap.ide.cmi.generation.ant.CMGenAntTask"/>
+<taskdef name="ddgen" classname="com.sap.dictionary.generation.ant.DDGenAntTask"/>
+<taskdef name="pppacker" classname="com.sap.tc.buildplugin.pp.PPPackTask"/>
+<taskdef name="propertybag" classname="com.sap.tools.ant.taskdefs.PropertyBag"/>
+<taskdef name="publicpartlist" classname="com.sap.tc.buildplugin.ddic.CreatePPEntitiesInfo"/>
+<taskdef name="sdadd" classname="com.sap.tools.ant.taskdefs.SdaDDTask"/>
+<taskdef name="timer" classname="com.sap.tools.ant.taskdefs.Timer"/>
+<taskdef name="wdgen" classname="com.sap.webdynpro.generation.ant.WDGenAntTask"/>
+<taskdef name="wdmin" classname="com.sap.tools.webdynpro.smart.ClassFileMinimizerTask"/>
+<taskdef name="xlf2prop" classname="com.sap.tc.buildplugin.util.XlfConverter"/>
+<!-- public part creation skipped because there are no public parts defined. -->
+
+<target name="compile">
+<!-- begin generator chain id 'sap.com~wdgen_chain', type 'sap.com~wdgen_chain' -->
+<!-- begin generator chain preprocessing -->
+<CreateDCDependencyInfo file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\DCDependencyInfo.xml"/>
+<delete file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\PublicPartFileList.xml"/>
+<publicpartlist file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\PublicPartList.xml"/>
+<!-- end generator chain preprocessing -->
+<!-- begin generator id 'sap.com~wdgen_chain/ddgen', type 'sap.com~ddgen' -->
+<echo message="Starting dictionary generator"/>
+<timer/>
+<ddgen targetpath="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic"
+       metadatapath="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C"
+       deployment="true"
+       vendor="demo.sap.com"
+       dcname="test"
+       archivename="demo.sap.com~test"
+       language=""
+       projectlanguage="en"
+       generateS2X="false">
+<sourcepath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages"/>
+</sourcepath>
+<addpath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\exception\lib\_comp\gen\default\public\api\lib\java\core.exception.lib.api.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\logging\api\_comp\gen\default\public\api\lib\java\tc~bl~logging~api~defaultttt.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\aii\base\offline\facade\_comp\gen\default\public\api\lib\java\tc~aii~base~offline~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\com.sap.tc.cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\tc~cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.rtcontainer.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.runtime.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.services.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\tc~ddic~runtime~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\SAP_BUILDT\sap.com\tc\bi\extddic\_comp\gen\default\public\def\lib\model\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproResources.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\sap.com~tc~wd~api~default.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\gci\lib\java\sap.com~tc~wd~api~gci.jar"/>
+</addpath>
+</ddgen>
+<mkdir dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic\datatypes"/>
+<mkdir dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic\dbtables"/>
+<timer message="Dictionary generator finished in "/>
+<!-- end generator id 'sap.com~wdgen_chain/ddgen', type 'sap.com~ddgen' -->
+<!-- begin generator id 'sap.com~wdgen_chain/cmgen', type 'sap.com~cmgen' -->
+<echo message="Starting common model generator"/>
+<timer/>
+<cmgen targetpath="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_cmi"
+       metadatapath="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C"
+       deployment="true"
+       vendor="demo.sap.com"
+       dcname="test"
+       archivename="demo.sap.com~test"
+       language=""
+       projectlanguage="en"
+       generateS2X="false">
+<sourcepath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages"/>
+</sourcepath>
+<addpath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\exception\lib\_comp\gen\default\public\api\lib\java\core.exception.lib.api.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\logging\api\_comp\gen\default\public\api\lib\java\tc~bl~logging~api~defaultttt.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\aii\base\offline\facade\_comp\gen\default\public\api\lib\java\tc~aii~base~offline~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\com.sap.tc.cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\tc~cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.rtcontainer.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.runtime.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.services.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\tc~ddic~runtime~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\SAP_BUILDT\sap.com\tc\bi\extddic\_comp\gen\default\public\def\lib\model\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproResources.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\sap.com~tc~wd~api~default.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\gci\lib\java\sap.com~tc~wd~api~gci.jar"/>
+</addpath>
+</cmgen>
+<mkdir dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_cmi\packages"/>
+<timer message="Common model generator finished in "/>
+<!-- end generator id 'sap.com~wdgen_chain/cmgen', type 'sap.com~cmgen' -->
+<!-- begin generator id 'sap.com~wdgen_chain/wdgen', type 'sap.com~wdgen' -->
+<echo message="Starting WebDynpro generator"/>
+<timer/>
+<publicpartlist file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp\PublicPartList.xml"/>
+<wdgen targetpath="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp"
+       metadatapath="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C"
+       deployment="true"
+       vendor="demo.sap.com"
+       dcname="test"
+       archivename="demo.sap.com~test"
+       language=""
+       projectlanguage="en"
+       generateS2X="false">
+<sourcepath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages"/>
+</sourcepath>
+<addpath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\exception\lib\_comp\gen\default\public\api\lib\java\core.exception.lib.api.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\logging\api\_comp\gen\default\public\api\lib\java\tc~bl~logging~api~defaultttt.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\aii\base\offline\facade\_comp\gen\default\public\api\lib\java\tc~aii~base~offline~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\com.sap.tc.cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\tc~cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.rtcontainer.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.runtime.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.services.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\tc~ddic~runtime~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\SAP_BUILDT\sap.com\tc\bi\extddic\_comp\gen\default\public\def\lib\model\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproResources.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\sap.com~tc~wd~api~default.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\gci\lib\java\sap.com~tc~wd~api~gci.jar"/>
+</addpath>
+</wdgen>
+<mkdir dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp\packages"/>
+<timer message="WebDynpro generator finished in "/>
+<!-- end generator id 'sap.com~wdgen_chain/wdgen', type 'sap.com~wdgen' -->
+<!-- begin generator extension type 'sap.com~sqlj' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- No *.sqlj files found, skipping SQLJ preprocessing. -->
+<!-- end generator extension type 'sap.com~sqlj' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator id 'sap.com~wdgen_chain/javac', type 'sap.com~javac' -->
+<echo message="Starting Java compiler using the current JVM"/>
+<timer/>
+<echo message="Settings:"/>
+<echo message="        debug: on"/>
+<echo message="     optimize: off"/>
+<echo message="  deprecation: default"/>
+<echo message="      verbose: default"/>
+<echo message="     encoding: UTF-8"/>
+<echo message="       source: default"/>
+<echo message="       target: default"/>
+<echo message=" source paths: "/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic/datatypes"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_cmi/packages"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp/packages"/>
+<echo message="   class path:"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\gci\lib\java\sap.com~tc~wd~api~gci.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\com.sap.tc.cmi.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\tc~cmi.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.rtcontainer.facade.filter.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.runtime.facade.filter.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.services.facade.filter.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\tc~ddic~runtime~facade.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\SapMetamodelDictionaryContent.zip"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\logging\api\_comp\gen\default\public\api\lib\java\tc~bl~logging~api~defaultttt.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\aii\base\offline\facade\_comp\gen\default\public\api\lib\java\tc~aii~base~offline~facade.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\exception\lib\_comp\gen\default\public\api\lib\java\core.exception.lib.api.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\sap.com~tc~wd~api~default.jar"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproContent.zip"/>
+<echo message="      C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproResources.zip"/>
+<echo message="   output dir: C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\classes"/>
+<checkfileset fail="false">
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages">
+<include name="**/*.class"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic/datatypes">
+<include name="**/*.class"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_cmi/packages">
+<include name="**/*.class"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp/packages">
+<include name="**/*.class"/>
+</fileset>
+</checkfileset>
+<javac includeAntRuntime="no"
+       destdir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\classes"
+       encoding="UTF-8"
+       deprecation="false"
+       debug="on"
+       tempdir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C">
+<src path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages"/>
+<src path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic/datatypes"/>
+<src path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_cmi/packages"/>
+<src path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp/packages"/>
+<include name="**/*.java"/>
+<classpath>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\gci\lib\java\sap.com~tc~wd~api~gci.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\com.sap.tc.cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java\tc~cmi.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.rtcontainer.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.runtime.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\dictionary.services.facade.filter.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\tc~ddic~runtime~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java\SapMetamodelDictionaryContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\logging\api\_comp\gen\default\public\api\lib\java\tc~bl~logging~api~defaultttt.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\aii\base\offline\facade\_comp\gen\default\public\api\lib\java\tc~aii~base~offline~facade.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\exception\lib\_comp\gen\default\public\api\lib\java\core.exception.lib.api.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\sap.com~tc~wd~api~default.jar"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproContent.zip"/>
+<pathelement location="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java\SapMetamodelWebdynproResources.zip"/>
+</classpath>
+</javac>
+<timer message="Java compilation finished in "/>
+<!-- end generator id 'sap.com~wdgen_chain/javac', type 'sap.com~javac' -->
+<!-- begin generator extension type 'sap.com~ddgen_cleanup' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- end generator extension type 'sap.com~ddgen_cleanup' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator extension type 'sap.com~jlin' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- JLin disabled. -->
+<!-- end generator extension type 'sap.com~jlin' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator extension type 'sap.com~sqlj' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- No *.sqlj files found, skipping SQLJ post-processing. -->
+<!-- end generator extension type 'sap.com~sqlj' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator extension type 'sap.com~jdo' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- No *.jdo files found, skipping JDO enhancer. -->
+<!-- end generator extension type 'sap.com~jdo' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator extension type 'sap.com~xlf2prop' for generator id 'sap.com~wdgen_chain/javac' -->
+<echo message="Start XLF conversion"/>
+<timer/>
+<xlf2prop todir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\classes">
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\DCs\demo.sap.com\test\_comp\src\packages">
+<exclude name="**/*.dtsimpletype*.xlf"/>
+<exclude name="**/*.dtstructure*.xlf"/>
+<exclude name="**/*.wdcomponent*.xlf"/>
+<exclude name="**/*.wdconfigobject*.xlf"/>
+<exclude name="**/*.wdcontroller*.xlf"/>
+<exclude name="**/*.wdview*.xlf"/>
+<exclude name="**/*.wdwindow*.xlf"/>
+<exclude name="**/*.wdapplication*.xlf"/>
+<exclude name="**/*.wdlocalcompintfdef*.xlf"/>
+<exclude name="**/*.wdinterfaceview*.xlf"/>
+<exclude name="**/*.wdmessagepool*.xlf"/>
+<exclude name="**/*.wdnavigation*.xlf"/>
+<exclude name="**/*.wdmodel*.xlf"/>
+<exclude name="**/*.wdmodelclass*.xlf"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_ddic/datatypes">
+<exclude name="**/*.dtsimpletype*.xlf"/>
+<exclude name="**/*.dtstructure*.xlf"/>
+<exclude name="**/*.wdcomponent*.xlf"/>
+<exclude name="**/*.wdconfigobject*.xlf"/>
+<exclude name="**/*.wdcontroller*.xlf"/>
+<exclude name="**/*.wdview*.xlf"/>
+<exclude name="**/*.wdwindow*.xlf"/>
+<exclude name="**/*.wdapplication*.xlf"/>
+<exclude name="**/*.wdlocalcompintfdef*.xlf"/>
+<exclude name="**/*.wdinterfaceview*.xlf"/>
+<exclude name="**/*.wdmessagepool*.xlf"/>
+<exclude name="**/*.wdnavigation*.xlf"/>
+<exclude name="**/*.wdmodel*.xlf"/>
+<exclude name="**/*.wdmodelclass*.xlf"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_cmi/packages">
+<exclude name="**/*.dtsimpletype*.xlf"/>
+<exclude name="**/*.dtstructure*.xlf"/>
+<exclude name="**/*.wdcomponent*.xlf"/>
+<exclude name="**/*.wdconfigobject*.xlf"/>
+<exclude name="**/*.wdcontroller*.xlf"/>
+<exclude name="**/*.wdview*.xlf"/>
+<exclude name="**/*.wdwindow*.xlf"/>
+<exclude name="**/*.wdapplication*.xlf"/>
+<exclude name="**/*.wdlocalcompintfdef*.xlf"/>
+<exclude name="**/*.wdinterfaceview*.xlf"/>
+<exclude name="**/*.wdmessagepool*.xlf"/>
+<exclude name="**/*.wdnavigation*.xlf"/>
+<exclude name="**/*.wdmodel*.xlf"/>
+<exclude name="**/*.wdmodelclass*.xlf"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp/packages">
+<exclude name="**/*.dtsimpletype*.xlf"/>
+<exclude name="**/*.dtstructure*.xlf"/>
+<exclude name="**/*.wdcomponent*.xlf"/>
+<exclude name="**/*.wdconfigobject*.xlf"/>
+<exclude name="**/*.wdcontroller*.xlf"/>
+<exclude name="**/*.wdview*.xlf"/>
+<exclude name="**/*.wdwindow*.xlf"/>
+<exclude name="**/*.wdapplication*.xlf"/>
+<exclude name="**/*.wdlocalcompintfdef*.xlf"/>
+<exclude name="**/*.wdinterfaceview*.xlf"/>
+<exclude name="**/*.wdmessagepool*.xlf"/>
+<exclude name="**/*.wdnavigation*.xlf"/>
+<exclude name="**/*.wdmodel*.xlf"/>
+<exclude name="**/*.wdmodelclass*.xlf"/>
+</fileset>
+</xlf2prop>
+<timer message="XLF conversion finished in "/>
+<!-- end generator extension type 'sap.com~xlf2prop' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator extension type 'sap.com~jdoc' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- Javadoc generation disabled. -->
+<!-- end generator extension type 'sap.com~jdoc' for generator id 'sap.com~wdgen_chain/javac' -->
+<!-- begin generator id 'sap.com~wdgen_chain/wdmin', type 'sap.com~wdmin' -->
+<echo message="Starting WebDynpro class minimizer (mode 'auto')"/>
+<timer/>
+<path id="fwkclasspath.1782722042555">
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\gci\lib\java">
+<include name="sap.com~tc~wd~api~gci.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java">
+<include name="com.sap.tc.cmi.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\cmi\_comp\gen\default\public\default\lib\java">
+<include name="tc~cmi.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java">
+<include name="dictionary.rtcontainer.facade.filter.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java">
+<include name="dictionary.runtime.facade.filter.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java">
+<include name="dictionary.services.facade.filter.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java">
+<include name="tc~ddic~runtime~facade.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\ddic\runtime\facade\_comp\gen\default\public\runtime\lib\java">
+<include name="SapMetamodelDictionaryContent.zip"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\logging\api\_comp\gen\default\public\api\lib\java">
+<include name="tc~bl~logging~api~defaultttt.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\FRAMEWORK\sap.com\tc\aii\base\offline\facade\_comp\gen\default\public\api\lib\java">
+<include name="tc~aii~base~offline~facade.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\ENGFACADE\sap.com\tc\bl\exception\lib\_comp\gen\default\public\api\lib\java">
+<include name="core.exception.lib.api.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java">
+<include name="sap.com~tc~wd~api~default.jar"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java">
+<include name="SapMetamodelWebdynproContent.zip"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\WD-RUNTIME\sap.com\tc\wd\api\_comp\gen\default\public\default\lib\java">
+<include name="SapMetamodelWebdynproResources.zip"/>
+</fileset>
+</path>
+<wdmin classlayout="nointf"
+       log="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wdminimize.log"
+       dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\classes"
+       debug="all"
+       ppfilelist="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\PublicPartFileList.xml"
+       mode="auto">
+<classpath>
+<pathelement path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\classes"/>
+</classpath>
+<fwkclasspath refid="fwkclasspath.1782722042555"/>
+</wdmin>
+<timer message="WebDynpro class minimizer finished in "/>
+<!-- end generator id 'sap.com~wdgen_chain/wdmin', type 'sap.com~wdmin' -->
+<!-- begin generator chain postprocessing -->
+<!-- end generator chain postprocessing -->
+<!-- end generator chain id 'sap.com~wdgen_chain', type 'sap.com~wdgen_chain' -->
+</target>
+
+<target name="createWDA" depends="compile">
+<timer/>
+<pppacker ppname="WebDynpro Application Jar"
+          internal="true"
+          purpose="intermediate"
+          root="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wd-app-jar">
+<entity name=""
+        package=""
+        type="Java Package Tree"
+        subtype="Class">
+<exclude name="**/*.wd*"/>
+</entity>
+</pppacker>
+<timer message="WebDynpro Application Jar packaging finished in "/>
+<mkdir dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wda-pp"/>
+<timer/>
+<pppacker ppname="WebDynpro Application"
+          internal="true"
+          purpose="assembly"
+          root="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wda-pp">
+<entity name="WebDynpro Archive"
+        type="WebDynpro Archive"
+        subtype="Archive"/>
+<entityHandler classname="com.sap.tc.buildplugin.pp.entity.EHWebDynproArchive">
+<entitytype type="WebDynpro Archive" subtype="Archive"/>
+</entityHandler>
+<assemblyroot dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wd-app-jar"/>
+</pppacker>
+<timer message="WebDynpro Application packaging finished in "/>
+</target>
+
+<target name="createDeployArchive" depends="createWDA">
+<echo message="Create deploy file demo.sap.com~test"/>
+        	<mkdir dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t2\FCBA932EEA9D439C7F76B9798681E23C\default\deploy"/>
+            <sdadd file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C/wd.xml"
+       softwaretype="J2EE"
+       descriptortype="engine">
+<SubstitutionVariable name="com.sap.sld.GatewayHost"/>
+<SubstitutionVariable name="com.sap.sld.GatewayService"/>
+</sdadd>
+
+
+                <!-- [C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp] -->
+                            
+                    <cda type="sap.com~j2ee.EAR_SDA" deployfile="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t2\FCBA932EEA9D439C7F76B9798681E23C\default\deploy/demo.sap.com~test.ear">
+<descriptor type="sda-deployment-descriptor" file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C/wd.xml"/>
+<assemblyroot path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wda-pp"/>
+<assemblyroot path="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wda-pp"/>
+
+                        <descriptor type="application.xml"             file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp/application.xml"/>
+                        <descriptor type="application-j2ee-engine.xml" file="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\gen_wdp/application-j2ee-engine.xml"/>
+            <option key="update-descriptors" value="true"/>
+            <moduletype mode="exclude-immediate" type="SAP-J2EE-Module[container-type[MOBILE]]"/>
+            <moduletype mode="include-immediate" type="SAP-J2EE-Module"/>
+            <moduletype mode="include-immediate" type="J2EE-Module"/>
+            <moduletype mode="exclude-immediate" type="jar"/>
+                        </cda>
+</target>
+
+<target name="build" depends="compile,createWDA,createDeployArchive">
+
+</target>
+</project>

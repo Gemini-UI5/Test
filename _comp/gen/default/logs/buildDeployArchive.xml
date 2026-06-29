@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    development component
+                     name: test
+                   vendor: demo.sap.com
+                     type: Web Dynpro
+                 sub-type: 
+              type-vendor: sap.com
+
+       software component
+                     name: MyComponents
+                   vendor: demo.sap.com
+
+                 location: localDevelopment
+          source location: kjakka@GCS-HLT-070
+            build variant: default
+
+    building on GCS-HLT-070, Windows 10/amd64, version 10.0
+    using Java VM 'Java HotSpot(TM) 64-Bit Server VM', version 25.202-b08 (Oracle Corporation)
+    build started at 2026-06-29 04:34:02 GMT-04:00 (EDT)
+
+    Build Plugin 'WebdynproPlugin', Version 7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:32:17 +0200, CL259458)
+    detailed versions:
+    sap.com:tc/bi/anttasks#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:09 +0200, CL259458)
+    sap.com:tc/bi/bp/webDynpro#webDynpro 7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:32:17 +0200, CL259458)
+    sap.com:tc/bi/core#def               7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:34:14 +0200, CL259458)
+    sap.com:tc/bi/ddictech#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:04 +0200, CL259458)
+    sap.com:tc/bi/exception#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:08 +0200, CL259458)
+    sap.com:tc/bi/extcm#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:13 +0200, CL259458)
+    sap.com:tc/bi/extddic#def            7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:07 +0200, CL259458)
+    sap.com:tc/bi/extddicdb#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:12 +0200, CL259458)
+    sap.com:tc/bi/extgf#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:07 +0200, CL259458)
+    sap.com:tc/bi/extmm#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:07 +0200, CL259458)
+    sap.com:tc/bi/extsql#def             7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:09 +0200, CL259458)
+    sap.com:tc/bi/extwd#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:12 +0200, CL259458)
+    sap.com:tc/bi/framework#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:30:47 +0200, CL259458)
+    sap.com:tc/bi/i18n#def               7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:06 +0200, CL259458)
+    sap.com:tc/bi/javatech#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:20 +0200, CL259458)
+    sap.com:tc/bi/jdoc#def               7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:08 +0200, CL259458)
+    sap.com:tc/bi/jdoc/util#def          7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:09 +0200, CL259458)
+    sap.com:tc/bi/jlincbs#def            7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:19 +0200, CL259458)
+    sap.com:tc/bi/settings#version       7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:32:05 +0200, CL259458)
+    sap.com:tc/bi/tssap#def              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:09 +0200, CL259458)
+    sap.com:tc/bi/util#util              7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:30:56 +0200, CL259458)
+    sap.com:tc/bi/velocity#def           7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:05 +0200, CL259458)
+    sap.com:tc/bi/wdtech#def             7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:31:44 +0200, CL259458)
+    sap.com:tc/bi/xml#def                7.30 SP 13 (NW750CORE_13_REL, built on 2018-10-02 18:33:06 +0200, CL259458)
+ -->
+<project name="DC Deploy build"
+         default="packDeployArchive"
+         basedir=".">
+<taskdef name="jarsap" classname="com.sap.sdm.ant.JarSAP"/>
+<taskdef name="propertybag" classname="com.sap.tools.ant.taskdefs.PropertyBag"/>
+<taskdef name="srcpacker" classname="com.sap.tc.buildplugin.ant.taskdefs.SourceArchiveCreatorTask"/>
+<taskdef name="timer" classname="com.sap.tools.ant.taskdefs.Timer"/>
+<property name="dtr-workspace" value="kjakka@GCS-HLT-070"/>
+
+<target name="packDeployArchive">
+<timer/>
+<srcpacker destination="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\sda\src.zip" archiveLocation="srcarchive">
+<usedpublicpart dcname="test"
+                dcvendor="demo.sap.com"
+                ppname="Internal:WebDynpro Application"/>
+</srcpacker>
+<timer message="Source archive creation finished in "/>
+<timer/>
+<jarsap jarfile="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t2\FCBA932EEA9D439C7F76B9798681E23C\default\deploy\demo.sap.com~test.ear" deployfile="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\sda\META-INF\wd.xml">
+<component vendor="demo.sap.com"
+           name="test"
+           location="localDevelopment"
+           counter="20260629083405"
+           scvendor="demo.sap.com"
+           scname="MyComponents"/>
+<dependency dependencytype="GLOBAL">
+<component specificationname="tc/cmi"
+           implementationtitle="tc/cmi"
+           implementationvendorid="sap.com"/>
+</dependency>
+<dependency dependencytype="GLOBAL">
+<component specificationname="tc/aii/base/offline/facade"
+           implementationtitle="tc/aii/base/offline/facade"
+           implementationvendorid="sap.com"/>
+</dependency>
+<dependency dependencytype="GLOBAL">
+<component specificationname="tc/wd/api"
+           implementationtitle="tc/wd/api"
+           implementationvendorid="sap.com"/>
+</dependency>
+<dependency dependencytype="GLOBAL">
+<component specificationname="tc/bl/logging/api"
+           implementationtitle="tc/bl/logging/api"
+           implementationvendorid="sap.com"/>
+</dependency>
+<dependency dependencytype="GLOBAL">
+<component specificationname="tc/bl/exception/lib"
+           implementationtitle="tc/bl/exception/lib"
+           implementationvendorid="sap.com"/>
+</dependency>
+<dependency dependencytype="GLOBAL">
+<component specificationname="tc/ddic/runtime/facade"
+           implementationtitle="tc/ddic/runtime/facade"
+           implementationvendorid="sap.com"/>
+</dependency>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\sda">
+<exclude name="**/*~"/>
+<exclude name="**/%*%"/>
+<exclude name="**/.#*"/>
+<exclude name="**/vssver.scc"/>
+<exclude name="**/.svn/**"/>
+<exclude name="**/.nfs*"/>
+<exclude name="**/CVS/**"/>
+<exclude name="**/._*"/>
+<exclude name="**/#*#"/>
+<exclude name="**/.cvsignore"/>
+<exclude name="**/SCCS/**"/>
+</fileset>
+<fileset dir="C:\Users\kjakka\eclipse-workspace.jdi\LocalDevelopment\t\FCBA932EEA9D439C7F76B9798681E23C\wda-pp\deploy\webdynpro">
+<include name="demo.sap.com~test.war"/>
+<exclude name="**/*~"/>
+<exclude name="**/%*%"/>
+<exclude name="**/.#*"/>
+<exclude name="**/vssver.scc"/>
+<exclude name="**/.svn/**"/>
+<exclude name="**/.nfs*"/>
+<exclude name="**/CVS/**"/>
+<exclude name="**/._*"/>
+<exclude name="**/#*#"/>
+<exclude name="**/.cvsignore"/>
+<exclude name="**/SCCS/**"/>
+</fileset>
+</jarsap>
+<timer message="JarSAP finished in "/>
+</target>
+</project>
